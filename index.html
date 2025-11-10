@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACTC Racing Simu V3 – Soporte & Descargas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0d; --panel:#121215; --muted:#8a8f98; --text:#eceff4; --accent:#e10600; /* rojo TC */
+      --accent-2:#ffda1f; /* dorado sutil para resaltar */
+      --ok:#00d084; --warn:#ffb703;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
+    header.hero{
+      position:relative; padding:56px 20px 24px; background:linear-gradient(160deg,#16161a 0%, #0b0b0d 60%, #171717 100%);
+      overflow:hidden; border-bottom:1px solid #1f232b;
+    }
+    .grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:24px}
+    @media(min-width:960px){.grid{grid-template-columns:1.2fr .8fr}}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #22262f;border-radius:999px;background:#14161b;color:var(--muted);font-size:12px}
+    .title{font-family:Rajdhani,Inter,sans-serif;font-size:44px;line-height:1.05;margin:12px 0;color:#fff;letter-spacing:.5px}
+    .subtitle{color:var(--muted);max-width:60ch}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid #262a33;background:#1a1d24;color:#fff;font-weight:600}
+    .btn.accent{background:var(--accent);border-color:#ff5049}
+    .btn.secondary{background:#11141a}
+    .hero-card{background:radial-gradient(60% 120% at 100% 0%,rgba(225,6,0,.2),transparent 60%), #101114;border:1px solid #22262f;border-radius:var(--radius);padding:18px}
+    .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:13px;color:var(--muted)}
+    .specs div{background:#0f1116;border:1px solid #1f232b;border-radius:12px;padding:10px}
+    nav.sticky{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.8);backdrop-filter:blur(8px);border-bottom:1px solid #20242c}
+    nav.sticky .wrap{max-width:1200px;margin:0 auto;display:flex;gap:10px;align-items:center;padding:10px 16px}
+    nav a{color:#cbd5e1;font-size:14px;padding:10px 12px;border-radius:10px}
+    nav a:hover{background:#14161b}
+    main{padding:28px 16px}
+    section{max-width:1200px;margin:0 auto 28px;background:linear-gradient(180deg,#0d0f13,#0a0b0e);border:1px solid #1e222b;border-radius:var(--radius);overflow:hidden}
+    section header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid #1f232b;background:#121421}
+    section h2{margin:0;font-family:Rajdhani,Inter,sans-serif;font-size:22px;letter-spacing:.4px}
+    .content{padding:18px}
+    .k{display:inline-grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;margin:10px 0}
+    .k .n{width:28px;height:28px;display:grid;place-items:center;background:var(--accent);color:#fff;border-radius:8px;font-weight:800;font-family:Rajdhani}
+    ul,ol{padding-left:20px}
+    pre, code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace}
+    pre{overflow:auto;background:#0c0e12;border:1px solid #1c2028;border-radius:12px;padding:14px}
+    .two{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.two{grid-template-columns:1fr 1fr}}
+    .callout{border-left:4px solid var(--accent);padding:12px 14px;background:#12141c;border-radius:10px;margin:10px 0}
+    .downloads{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:780px){.downloads{grid-template-columns:1fr 1fr}}
+    .dl{background:#0f1116;border:1px solid #232733;border-radius:14px;padding:14px}
+    .dl h3{margin:0 0 6px 0;font-size:16px}
+    .dl p{margin:0 0 8px 0;color:var(--muted);font-size:14px}
+    .dl a{display:inline-block;margin-right:8px;margin-bottom:6px}
+    footer{max-width:1200px;margin:40px auto 60px;display:grid;gap:14px;color:#9aa3ad}
+    .tag{display:inline-block;font-size:11px;border:1px solid #2b2f3a;color:#9aa3ad;border-radius:999px;padding:3px 8px;margin-right:6px}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="grid">
+      <div>
+        <span class="badge">🏁 Guía oficial de soporte • ACTC Racing Simu V3</span>
+        <h1 class="title">Simulador de Turismo Carretera — Soporte, Guía de Instalación y Descargas</h1>
+        <p class="subtitle">Todo el contenido del documento de soporte, reordenado por secciones y con un centro de descargas completo. Diseño inspirado en el TC argentino: rápido, claro y directo.</p>
+        <div class="cta-row">
+          <a class="btn accent" href="#descargas">⬇️ Ir a Descargas</a>
+          <a class="btn secondary" href="#faq">💬 Preguntas Frecuentes</a>
+          <a class="btn" href="mailto:info@bundlegames.com.ar">📧 Contacto Soporte</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3 style="margin:.25rem 0 8px;font-family:Rajdhani;font-size:20px">Requisitos rápidos</h3>
+        <div class="specs">
+          <div>🎮 Ejecutar <strong>Loader_TC</strong> (atajo en escritorio recomendado)</div>
+          <div>🧰 Instalar <strong>DirectX (DXSETUP)</strong> una sola vez</div>
+          <div>🛠️ Configurar <strong>Loader_TC.exe</strong> y <strong>Juego.exe</strong> (ver Punto 7)</div>
+          <div>🖥️ Video en <strong>DX9</strong> + crear <strong>Player</strong> al iniciar</div>
+        </div>
+        <p style="margin-top:10px;color:var(--muted);font-size:13px">Videotutorial: <a target="_blank" href="https://www.youtube.com/watch?v=RxjTtORDV1Q">YouTube</a></p>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="sticky">
+    <div class="wrap">
+      <a href="#guia">Guía rápida</a>
+      <a href="#faq">FAQ (1–41)</a>
+      <a href="#online">Online</a>
+      <a href="#personalizaciones">Personalizaciones</a>
+      <a href="#bibliografia">Bibliografía</a>
+      <a href="#descargas">Descargas</a>
+      <span style="flex:1"></span>
+      <span class="tag">v3</span>
+      <span class="tag">DX9</span>
+      <span class="tag">Matchmaker 07/2025</span>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 0. Guía rápida -->
+    <section id="guia">
+      <header><h2>0 — Guía rápida para instalar</h2></header>
+      <div class="content">
+        <ol>
+          <li>Baje el juego y <strong>todas</strong> las actualizaciones (ver Punto 23).</li>
+          <li>Descomprima <strong>solo PART1</strong> para crear <em>ACTC Racing Simu V3</em>. Use <strong>WINRAR</strong> (recomendado).</li>
+          <li>Opcional: cree acceso directo a <strong>Loader_TC</strong> en el escritorio.</li>
+          <li>Instale <strong>DirectX</strong>: en <code>ACTC Racing Simu V3/Support/DirectX/DXSETUP</code>.</li>
+          <li>Configure <strong>Loader_TC.exe</strong> y <strong>Juego.exe</strong> (ver Punto 7). <em>Muy importante.</em></li>
+          <li>Ejecute <strong>Loader_TC</strong> para cargar el juego.</li>
+          <li>Primera vez: botón <strong>CONFIG. VIDEO</strong> → <strong>DX9</strong>, luego <strong>CREAR PLAYER</strong>.</li>
+          <li>Activación: use el <strong>código de activación</strong> (ver Punto 1). Guárdelo para futuras reactivaciones.</li>
+        </ol>
+        <p class="callout">Videotutorial: <a target="_blank" href="https://www.youtube.com/watch?v=RxjTtORDV1Q">https://www.youtube.com/watch?v=RxjTtORDV1Q</a> • Dudas: <a href="mailto:info@bundlegames.com.ar">info@bundlegames.com.ar</a></p>
+      </div>
+    </section>
+
+    <!-- FAQ completa 1–41 -->
+    <section id="faq">
+      <header><h2>Preguntas frecuentes & soluciones (1–41)</h2></header>
+      <div class="content">
+        <div class="k"><span class="n">1</span><div><strong>¿Cómo activo el juego?</strong> Ingrese el código en <em>ACTIVATE</em>. Escríbalo <strong>con guiones</strong>; no hay letras “O” (son ceros). Guárdelo para reactivar.</div></div>
+        <div class="k"><span class="n">2</span><div><strong>¿Cómo reactivo?</strong> Exactamente igual que la 1ra vez, con el <strong>mismo código</strong>. Si no quedan activaciones, escriba a <a href="mailto:info@bundlegames.com.ar">info@bundlegames.com.ar</a> (envíe el código escrito, no foto).</div></div>
+        <div class="k"><span class="n">3</span><div><strong>No veo carreras online / matchmaking.</strong> Debe tener <strong>todas</strong> las actualizaciones (ver Puntos 23 y 41).</div></div>
+        <div class="k"><span class="n">4</span><div><strong>Choques en 1ª vuelta o Pace Car errático.</strong> Baje la agresividad en la configuración y reinicie con la tecla <strong>Y</strong>.</div></div>
+        <div class="k"><span class="n">5</span><div><strong>Carga y se cierra.</strong> Cree su perfil y configure <strong>DX9</strong>. Evite caracteres extraños/“ñ”/espacios al inicio/fin del nombre. Revise compatibilidad (Punto 7).</div></div>
+        <div class="k"><span class="n">6</span><div><strong>Solo Neuquén / autos 2013 visibles.</strong> Cree su perfil en el lanzador y luego dentro del juego elija categoría/temporada en “Perfil del Jugador”.</div></div>
+        <div class="k"><span class="n">7</span><div>
+          <strong>Errores “Crash” (configuración obligatoria).</strong>
+          <ul>
+            <li><em>Loader</em>: <strong>solo</strong> “Ejecutar como administrador”.</li>
+            <li><em>Juego.exe</em>: compatibilidad <strong>Win Vista SP2 / Vista / XP SP3</strong> + “Ejecutar como admin”.</li>
+          </ul>
+          <p>Procedimiento: botón derecho → Propiedades → solapa <em>Compatibilidad</em> → setear como indicado.</p>
+        </div></div>
+        <div class="k"><span class="n">8</span><div>
+          <strong>“Error Code” / Desactivación.</strong> Posible cambio HW/SW o uso del código en otra PC. Limpie el registro y reactive.
+          <div class="two">
+            <div>
+              <p><strong>Cleaner</strong> (sin interfaz, genera LOG):</p>
+              <ul>
+                <li><a target="_blank" href="http://bundlegames.com.ar/descargas/TC_Clean.zip">TC_Clean.zip</a></li>
+                <li><a target="_blank" href="http://bundlegames.com.ar/descargas/TC_Clean_Alternativo.zip">TC_Clean_Alternativo.zip</a></li>
+              </ul>
+            </div>
+            <div>
+              <p>Notas:</p>
+              <ul>
+                <li>Si el antivirus bloquea, crear excepción para <code>tc_cleaner.exe</code>.</li>
+                <li>Ejecutar como administrador si es necesario.</li>
+                <li>En algunos casos bastó con crear excepción de la <strong>carpeta del simulador</strong> en el antivirus.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="callout"><strong>Consejo:</strong> Active con el hardware definitivo conectado (ej. TV LCD + auricular USB).</p>
+        </div></div>
+        <div class="k"><span class="n">9</span><div><strong>Soporte adicional:</strong> <a href="mailto:info@bundlegames.com.ar">info@bundlegames.com.ar</a>.</div></div>
+        <div class="k"><span class="n">10</span><div><strong>ALT+TAB cuelga.</strong> Evítelo. Configure herramientas externas (ej. TeamSpeak) <em>antes</em> de cargar el simulador.</div></div>
+        <div class="k"><span class="n">11</span><div><strong>Se cierra al ejecutar.</strong> Verifique video en <strong>DX9</strong> y la compatibilidad del Punto 7.</div></div>
+        <div class="k"><span class="n">12</span><div><strong>Anda lento/trabado.</strong> Baje sombras, suavizado de sombras, autos visibles; lea <em>Leeme2024.txt</em> y las <em>Cholo Tweeks</em> (Punto 36).</div></div>
+        <div class="k"><span class="n">13</span><div><strong>Win Vista desconfigura usuario.</strong> Ejecutar como Administrador (ver Punto 7).</div></div>
+        <div class="k"><span class="n">14</span><div><strong>¿Después de formatear hay que comprar de nuevo?</strong> No. Guarde siempre su código (ver Punto 2).</div></div>
+        <div class="k"><span class="n">15</span><div><strong>“Mismatch” online.</strong> El server tiene contenido distinto. Contacte al admin para obtener sus mods/versiones.</div></div>
+        <div class="k"><span class="n">16</span><div><strong>No carga / problema al crear perfil / pantalla negra.</strong> Revise Punto 7. No use caracteres no admitidos en el nombre.</div></div>
+        <div class="k"><span class="n">17</span><div><strong>No reconoce código / no activa.</strong> Deshabilite temporalmente el <strong>firewall</strong> para activar. Los códigos llevan guiones y ceros “0” (no “o”).</div></div>
+        <div class="k"><span class="n">18</span><div><strong>No funciona el LOADER o falta ícono.</strong> Ejecute como admin (Punto 7) o instale el último <strong>.NET Framework</strong>. Para icono: crear acceso directo a <em>LoaderTC</em>.</div></div>
+
+        <hr style="border:0;border-top:1px solid #1f232b;margin:18px 0">
+        <h3 id="online">19 — Experiencia <em>online</em> (recomendaciones)</h3>
+        <ol>
+          <li><strong>Autos:</strong> máximo aconsejado 40.</li>
+          <li><strong>Gráficos (clientes):</strong> ajuste según hardware. Bajar <em>antialiasing</em> por defecto (suele estar en 16x).</li>
+          <li><strong>Plugins:</strong> cargan CPU; use solo los necesarios.</li>
+          <li><strong>VRAM:</strong> texturas grandes consumen más; mantenga el simulador actualizado.</li>
+          <li><strong>Servidores dedicados (rendimiento):</strong> buena RAM; evite múltiples SD simultáneos y VMs.</li>
+          <li><strong>Residuos SD:</strong> limpie temporales, XML, HAT con frecuencia.</li>
+          <li><strong>Ping:</strong> alquile dedicados en Argentina; si usa AU/US, que soporten 60+ slots y use máximo 40.</li>
+          <li><strong>Conexión clientes:</strong> configure en <strong>ISDN</strong> dentro del simulador.</li>
+          <li><strong>Respeto:</strong> todos deben configurar bien sus equipos para una buena experiencia común.</li>
+          <li><strong>Firewalls (hostear):</strong> abrir puertos <strong>TCP/UDP</strong>: <code>39001, 39002, 34123, 34447, 34297, 34397</code>.</li>
+          <li><strong>Lag/microcortes:</strong> prefiera servidores nacionales y excelente conexión.</li>
+          <li><strong>Limitar FPS:</strong> editar <code>Max Framerate=80</code> en <code>UserData/*player*.PLR</code>.</li>
+          <li><strong>Limitar data (servidores dedicados):</strong> editar <code>multiplayer.ini</code>:
+            <pre>[ Multiplayer General Options ]
+Net Connection Type="6"
+Upstream Rated KBPS="4000"
+Downstream Rated KBPS="4000"
+Multiplayer Enum Type="1"
+Net Flush Threshold="472"
+Query Port Start="34297"
+Port Start="34397"
+Display Laggy Labels="0"
+Concurrent Server Updates="100"
+Request Autodownloads="0"
+Alternate Matchmaker Address="200.59.123.25"
+Matchmaker TCP Port="39001"
+Matchmaker UDP Port="39002"
+Buddy List Announce="0"
+Live Updates="0"
+RaceCast Auto Login="0"
+[ Multiplayer Server Options ]
+Must Be Stopped="0"
+Max MP Players="48"
+Max Data Per Client="64"</pre>
+          </li>
+          <li><strong>Limitar data (clientes):</strong> editar <code>multiplayer.ini</code>:
+            <pre>[ Multiplayer General Options ]
+Net Connection Type="2"
+Upstream Rated KBPS="64"
+Downstream Rated KBPS="64"
+Query Port Start="34297"
+Port Start="34397"
+Concurrent Server Updates="100"
+Request Autodownloads="0"
+Alternate Matchmaker Address="200.59.123.25"
+Matchmaker TCP Port="39001"
+Matchmaker UDP Port="39002"
+Buddy List Announce="0"
+Live Updates="0"
+RaceCast Auto Login="0"</pre>
+          </li>
+        </ol>
+
+        <div class="k"><span class="n">20</span><div><strong>Licencias de activación.</strong> Son <em>únicas e intransferibles</em> y se asocian a la PC donde se activan por primera vez. Si el sistema detecta activaciones en más de una PC, bloqueará futuras reactivaciones.</div></div>
+        <div class="k"><span class="n">21</span><div><strong>Falta D3DX9.DLL.</strong> Instale <strong>DirectX</strong>. Otra opción: <a target="_blank" href="http://www.mediafire.com/file/ih77uvpy0e1164t/directx_Jun2010_redist.exe">directx_Jun2010_redist.exe</a>.</div></div>
+        <div class="k"><span class="n">22</span><div><strong>Comprar licencia.</strong> <a target="_blank" href="https://www.bundlegames.com.ar/simutc.html">bundlegames.com.ar/simutc.html</a> • Compras por cantidad para ligas: <a href="mailto:info@bundlegames.com.ar">info@bundlegames.com.ar</a>.</div></div>
+        <div class="k"><span class="n">23</span><div>
+          <strong>Cómo bajar el juego y actualizaciones (links intercambiables):</strong>
+          <ul>
+            <li>Google A: <a target="_blank" href="https://drive.google.com/drive/folders/1EOUR9TSje1ogV2cil-tuXDodCypw3LSu?usp=drive_link">Folder</a></li>
+            <li>Google B: <a target="_blank" href="https://drive.google.com/drive/folders/1eAZDbPaIONZC3-6-Ggmdw1n9hvK_tuYT?usp=drive_link">Folder</a></li>
+            <li>itch.io: <a target="_blank" href="https://bundlegames.itch.io/simulador-turismo-carretera">Página del simulador</a></li>
+            <li>4Shared: <a target="_blank" href="https://www.4shared.com/folder/q51ACicw/ACTC_Racing_Simu_V3.html">ACTC_Racing_Simu_V3</a></li>
+            <li>MediaFire (base/updates): <a target="_blank" href="https://www.mediafire.com/folder/kdjcqts585kro/ACTC+Racing+Simu+V3">Carpeta</a></li>
+          </ul>
+          <p>Notas: Si ya tiene el juego y solo necesita una temporada, ver Punto 38. También allí: contenidos extra y guía rápida para instalar upgrades y mods.</p>
+        </div></div>
+        <div class="k"><span class="n">24</span><div><strong>Autos negros:</strong> use <strong>solo DX9</strong> (no DX7/DX8).</div></div>
+        <div class="k"><span class="n">25</span><div><strong>Usar mods de rFactor en Simu TC:</strong> Solo si <em>no tienen copyright</em>. Debe encriptar GMT dentro de archivos MAS del Simu TC. Herramienta: <a target="_blank" href="http://www.mediafire.com/download/92mnxfkyl8q02gs/MAS_TC_v3.zip">MAS_TC_v3.zip</a>. <em>No damos soporte</em>.</div></div>
+        <div class="k"><span class="n">26</span><div><strong>Crash con volantes Logitech.</strong> Borrar <code>dinput8.dll</code> en la carpeta principal del juego. Mantener <em>G Hub</em> actualizado.</div></div>
+        <div class="k"><span class="n">27</span><div><strong>PC recomendada.</strong> CPU actual (i3+), 8 GB RAM, GPU 2 GB+ (Nvidia o similar). Corre en PC gamer o laptop.</div></div>
+        <div class="k"><span class="n">28</span><div>
+          <strong>Campeonato: más series/finales y orden de pistas.</strong>
+          <p><em>Editar CCH</em> (en <code>USERDATA/*TUNOMBRE*</code>):</p>
+          <pre>RACECOND_num_qual_sessions=1    (1 a 4)
+RACECOND_num_race_sessions=3    (3=dos series+final / 4=tres series+final)</pre>
+          <p><em>Editar RFM</em> (p.e. <code>TC2016.rfm</code> en <code>/RFM</code>):</p>
+          <pre>Season = *Nombre del Campeonato*
+{
+  Vehicle Filter = TC2016
+  Min Championship Opponents = 10
+  SceneOrder {
+    Comodoro
+    MarDeAjo
+    Baires
+  }
+}</pre>
+          <p>Use el nombre exacto de la carpeta/archivo <code>.GDB</code> del circuito (ej. <code>Ovalo09</code>).</p>
+          <p>Asegúrese que la línea <code>Track Filter = *</code> tenga asterisco.</p>
+        </div></div>
+        <div class="k"><span class="n">29</span><div>
+          <strong>Personalizaciones comunes (vueltas, sistema, puntuación)</strong>
+          <div class="two">
+            <div>
+              <h4>Vueltas de carrera (GDB)</h4>
+              <pre>Race4Laps = 20
+Race1Laps = 20
+Race2Laps = 20
+Race3Laps = 20</pre>
+            </div>
+            <div>
+              <h4>Sistema de carrera (PLR)</h4>
+              <pre>QUICK Num Race Sessions="4"
+MULTI Num Race Sessions="4"
+QUICK Num Qual Sessions="3"
+MULTI Num Qual Sessions="3"
+Run Practice1/2/3/4 = "1"</pre>
+            </div>
+          </div>
+          <h4>Puntuación (RFM)</h4>
+          <pre>SeasonScoringInfo { Place=5; Place=4; Place=3; ... }
+SeasonScoringInfoRace2 { Place=5; Place=4.5; Place=4; ... }
+SeasonScoringInfoRace3 { Place=5; Place=4.5; Place=4; ... }
+SeasonScoringInfoRace4 { Place=20; Place=16; Place=13; ... }</pre>
+          <p class="callout"><strong>Tip:</strong> Evite “mismatch” manteniendo una copia “original” limpia y otras copias para modificaciones.</p>
+        </div></div>
+        <div class="k"><span class="n">30</span><div><strong>¿Faltan autos/pistas o detalles visuales?</strong> Visite <a target="_blank" href="http://rfm-modding.blogspot.com.ar/">RFM Modding</a> para actualizaciones, asesoramiento y diseños.</div></div>
+        <div class="k"><span class="n">31</span><div><strong>Se desconfigura y no abre.</strong> Cree excepción en el antivirus (p.ej. Windows Defender). Guía: <a target="_blank" href="https://support.microsoft.com/es-ar/help/4027187/windows-turn-off-windows-defender-antivirus">support.microsoft.com</a>.</div></div>
+        <div class="k"><span class="n">32</span><div>
+          <strong>Comandos de administrador online (chat, comienzan con “/”)</strong>
+          <pre>/vote yes | /vote no | /ping | /w &lt;sendee&gt; &lt;chat&gt;
+/callvote nextsession | nextrace | restartrace | restartwarmup | restartweekend
+/callvote addai | add5ai | kick &lt;name&gt; | ban &lt;name&gt;
+/admin &lt;password&gt; | /editgrid &lt;pos&gt; &lt;name&gt; | /setmass &lt;kg&gt; &lt;name&gt;
+/changelaps &lt;+/-laps&gt; &lt;name&gt; | /addpenalty &lt;code&gt; &lt;name&gt; | /subpenalty &lt;code&gt; &lt;name&gt;</pre>
+        </div></div>
+        <div class="k"><span class="n">33</span><div>
+          <strong>Edición de grilla (servidor dedicado, una sola carrera)</strong>
+          <h4>Modo manual</h4>
+          <ol>
+            <li><code>/admin &lt;password&gt;</code></li>
+            <li>Entrar al <em>warmup</em> (sin salir a pista).</li>
+            <li>Editar uno a uno: <code>/editgrid &lt;posicion&gt; &lt;nombre&gt;</code></li>
+          </ol>
+          <h4>Modo batch</h4>
+          <p>Crear <code>grid.ini</code> en <code>c:/simu tc/userdata/log/results/grid.ini</code> con líneas <code>/editgrid</code> y ejecutar <code>/batch grid.ini</code> como admin.</p>
+        </div></div>
+        <div class="k"><span class="n">34</span><div><strong>Soporte personalizado.</strong> Reintentar instalación/configuración (funciona en 99% de PCs). Alternativas: <a target="_blank" href="http://rfm-modding.blogspot.com.ar/">RFM Modding</a> o técnico externo (Agustín: 11‑2256‑8300, con cargo).</div></div>
+        <div class="k"><span class="n">35</span><div><strong>Editar cámaras de manejo.</strong> Modifique <code>xxxx_cockpitinfo.ini</code> (marca/año) y la línea <code>Eyepoint=(x,y,z)</code>. No produce mismatch.</div></div>
+        <div class="k"><span class="n">36</span><div>
+          <strong>Bibliografía (lecturas recomendadas)</strong>
+          <ul>
+            <li>Manual no oficial Simu TC (Diego Pungitore): <a target="_blank" href="http://www.mediafire.com/file/bmq7x1rfe9mi8gn/Manual_no_oficial_del_Simulador_de_Turismo_Carretera.pdf/file">MediaFire</a></li>
+            <li>Manual Simu TC (vintage V1): <a target="_blank" href="http://www.mediafire.com/file/8lci01phe6d9vcu/Manual.pdf/file">MediaFire</a></li>
+            <li>Manual rFactor (V1): <a target="_blank" href="http://www.mediafire.com/file/lyrqvr2xeqrzlxk/rFactorManual.pdf/file">MediaFire</a></li>
+            <li>Guía Firewall rFactor: <a target="_blank" href="http://www.mediafire.com/file/y66zphp5md0k9ds/FirewallGuide.pdf/file">MediaFire</a></li>
+            <li>Guía “Cholo Tweeks” (IA y cámaras): <a target="_blank" href="http://bundlegames.com.ar/descargas/CholoTweeks.docx">Descargar DOCX</a></li>
+          </ul>
+        </div></div>
+        <div class="k"><span class="n">37</span><div><strong>Error 0xc00007b.</strong> Problema de librerías de Windows. Solución en video: <a target="_blank" href="https://www.youtube.com/watch?v=c8pusdhWNok">Video 1</a> • <a target="_blank" href="https://www.youtube.com/watch?v=2KzX9Ns6KD0">Video 2</a>.</div></div>
+        <div class="k"><span class="n">38</span><div>
+          <strong>Contenidos extra y actualizaciones (mods, autos, pistas)</strong>
+          <ul>
+            <li>MediaFire Mods 1: <a target="_blank" href="https://www.mediafire.com/folder/15d8awyns4ot2/Mods_1">Carpeta</a></li>
+            <li>MediaFire Mods 2: <a target="_blank" href="https://www.mediafire.com/folder/96yjt4fsk78lr/Mods_2">Carpeta</a></li>
+            <li>MediaFire Mods 3: <a target="_blank" href="https://www.mediafire.com/folder/xvl1i3zqynhiw/Mods_3">Carpeta</a></li>
+            <li>MediaFire Mods 4: <a target="_blank" href="https://www.mediafire.com/folder/oo1z98e9rayow/Mods_4">Carpeta</a></li>
+            <li>MediaFire Mods 5: <a target="_blank" href="https://www.mediafire.com/folder/u91wiwscon5f6/Mods+5">Carpeta</a></li>
+            <li>MEGA (pack): <a target="_blank" href="https://mega.nz/folder/dRYVQYbB#wdfyvIcob7R1lg1xLx8sww">Carpeta</a></li>
+          </ul>
+          <p><strong>Instalación:</strong> descomprimir y copiar <code>RFM</code> y <code>GAMEDATA</code> dentro de la carpeta principal del simulador. Aceptar sobrescritura.</p>
+        </div></div>
+        <div class="k"><span class="n">39</span><div><strong>MercadoLibre borra chats, perdí mi código.</strong> No guardamos licencias de usuarios. Busque en la mensajería privada (en la app suelen preservarse).</div></div>
+        <div class="k"><span class="n">40</span><div><strong>Tonalidad de vidrios (habitáculo).</strong> Editar canal alfa del <code>WINDOW.dds</code> correspondiente: <code>C:/ACTC Racing Simu V3/GameData/Vehicles/&lt;categoria&gt;/&lt;temporada&gt;/&lt;marca&gt;/&lt;nombre&gt;-WINDOW.dds</code>.</div></div>
+        <div class="k"><span class="n">41</span><div><strong>Matchmaker (desde julio 2025):</strong> se actualizó IP, es necesario actualizar el juego. Info: <a target="_blank" href="https://www.facebook.com/BundleGames/posts/1134909198660961">Facebook – BundleGames</a>. Desde 07/2025 los upgrades nuevos ya incluyen el cambio.</div></div>
+      </div>
+    </section>
+
+    <!-- Personalizaciones resumidas (atajos visuales) -->
+    <section id="personalizaciones">
+      <header><h2>Atajos de personalización (ediciones típicas)</h2></header>
+      <div class="content two">
+        <div class="dl">
+          <h3>🍯 PLR — Sistema de fin de semana</h3>
+          <pre>QUICK Num Race Sessions="4"   # 1=final | 2=dos carreras | 3=dos series+final | 4=tres series+final
+MULTI Num Race Sessions="4"
+QUICK Num Qual Sessions="3"
+MULTI Num Qual Sessions="3"
+Run Practice1/2/3/4="1"</pre>
+        </div>
+        <div class="dl">
+          <h3>🛣️ GDB — Vueltas por carrera</h3>
+          <pre>Race1Laps = 20
+Race2Laps = 20
+Race3Laps = 20
+Race4Laps = 20</pre>
+        </div>
+        <div class="dl">
+          <h3>🏆 RFM — Puntuación</h3>
+          <pre>SeasonScoringInfo { Place=20; 16; 13; 11; 10; 9; 8; 7; 6; 5; 4.5; 3; 2; ... }</pre>
+        </div>
+        <div class="dl">
+          <h3>👁️ Cockpit — Posición de cámara</h3>
+          <pre>Eyepoint=(x, y, z)   # en xxxx_cockpitinfo.ini</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Centro de Descargas -->
+    <section id="descargas">
+      <header><h2>Centro de descargas</h2></header>
+      <div class="content downloads">
+        <div class="dl">
+          <h3>🎬 Videotutorial</h3>
+          <a target="_blank" href="https://www.youtube.com/watch?v=RxjTtORDV1Q">YouTube – Instalación</a>
+        </div>
+        <div class="dl">
+          <h3>🧰 DirectX & Dependencias</h3>
+          <p>Instalar una sola vez; si falta d3dx9.dll:</p>
+          <a target="_blank" href="http://www.mediafire.com/file/ih77uvpy0e1164t/directx_Jun2010_redist.exe">DirectX Jun 2010 (redist)</a>
+        </div>
+        <div class="dl">
+          <h3>🧹 Limpieza / Reactivación</h3>
+          <a target="_blank" href="http://bundlegames.com.ar/descargas/TC_Clean.zip">TC_Clean.zip</a>
+          <a target="_blank" href="http://bundlegames.com.ar/descargas/TC_Clean_Alternativo.zip">TC_Clean_Alternativo.zip</a>
+        </div>
+        <div class="dl">
+          <h3>⬇️ Juego — Descargas (intercambiables)</h3>
+          <a target="_blank" href="https://drive.google.com/drive/folders/1EOUR9TSje1ogV2cil-tuXDodCypw3LSu?usp=drive_link">Google Drive A</a>
+          <a target="_blank" href="https://drive.google.com/drive/folders/1eAZDbPaIONZC3-6-Ggmdw1n9hvK_tuYT?usp=drive_link">Google Drive B</a>
+          <a target="_blank" href="https://bundlegames.itch.io/simulador-turismo-carretera">itch.io</a>
+          <a target="_blank" href="https://www.4shared.com/folder/q51ACicw/ACTC_Racing_Simu_V3.html">4Shared</a>
+          <a target="_blank" href="https://www.mediafire.com/folder/kdjcqts585kro/ACTC+Racing+Simu+V3">MediaFire (base/updates)</a>
+        </div>
+        <div class="dl">
+          <h3>🧩 Herramientas</h3>
+          <a target="_blank" href="http://www.mediafire.com/download/92mnxfkyl8q02gs/MAS_TC_v3.zip">MAS_TC_v3.zip (encriptar GMT→MAS)</a>
+        </div>
+        <div class="dl">
+          <h3>📚 Bibliografía</h3>
+          <a target="_blank" href="http://www.mediafire.com/file/bmq7x1rfe9mi8gn/Manual_no_oficial_del_Simulador_de_Turismo_Carretera.pdf/file">Manual no oficial Simu TC</a>
+          <a target="_blank" href="http://www.mediafire.com/file/8lci01phe6d9vcu/Manual.pdf/file">Manual Simu TC (V1)</a>
+          <a target="_blank" href="http://www.mediafire.com/file/lyrqvr2xeqrzlxk/rFactorManual.pdf/file">Manual rFactor</a>
+          <a target="_blank" href="http://www.mediafire.com/file/y66zphp5md0k9ds/FirewallGuide.pdf/file">Guía Firewall rFactor</a>
+          <a target="_blank" href="http://bundlegames.com.ar/descargas/CholoTweeks.docx">Cholo Tweeks (DOCX)</a>
+        </div>
+        <div class="dl">
+          <h3>🧱 Mods y Upgrades</h3>
+          <a target="_blank" href="https://www.mediafire.com/folder/15d8awyns4ot2/Mods_1">Mods 1</a>
+          <a target="_blank" href="https://www.mediafire.com/folder/96yjt4fsk78lr/Mods_2">Mods 2</a>
+          <a target="_blank" href="https://www.mediafire.com/folder/xvl1i3zqynhiw/Mods_3">Mods 3</a>
+          <a target="_blank" href="https://www.mediafire.com/folder/oo1z98e9rayow/Mods_4">Mods 4</a>
+          <a target="_blank" href="https://www.mediafire.com/folder/u91wiwscon5f6/Mods+5">Mods 5</a>
+          <a target="_blank" href="https://mega.nz/folder/dRYVQYbB#wdfyvIcob7R1lg1xLx8sww">MEGA (pack)</a>
+        </div>
+        <div class="dl">
+          <h3>🛰️ Matchmaker (julio 2025)</h3>
+          <a target="_blank" href="https://www.facebook.com/BundleGames/posts/1134909198660961">Publicación oficial</a>
+        </div>
+        <div class="dl">
+          <h3>🛡️ Antivirus / Defender</h3>
+          <a target="_blank" href="https://support.microsoft.com/es-ar/help/4027187/windows-turn-off-windows-defender-antivirus">Guía Microsoft Defender</a>
+        </div>
+        <div class="dl">
+          <h3>🎥 soluciones error 0xc00007b</h3>
+          <a target="_blank" href="https://www.youtube.com/watch?v=c8pusdhWNok">YouTube – Fix #1</a>
+          <a target="_blank" href="https://www.youtube.com/watch?v=2KzX9Ns6KD0">YouTube – Fix #2</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="bibliografia">
+      <header><h2>Notas y créditos</h2></header>
+      <div class="content">
+        <p>Actualizaciones anuales, asesoría y comunidad: <a target="_blank" href="http://rfm-modding.blogspot.com.ar/">RFM Modding</a>.</p>
+        <p>Para compras de licencias individuales o paquetes: <a target="_blank" href="https://www.bundlegames.com.ar/simutc.html">bundlegames.com.ar/simutc.html</a> • Soporte: <a href="mailto:info@bundlegames.com.ar">info@bundlegames.com.ar</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>⚙️ Esta página resume y respeta el contenido completo del documento de soporte ACTC Racing Simu V3. Todos los enlaces y pasos críticos se incluyen y seccionan para una consulta rápida.</div>
+      <div>🔗 Ports online sugeridos: <code>39001, 39002, 34123, 34447, 34297, 34397</code> • Video: <strong>DX9</strong> • Perfil sin caracteres especiales.
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
